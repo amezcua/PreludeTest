@@ -21,7 +21,8 @@ let package = Package(
         ),
         .binaryTarget(
             name: "PreludeCore",
-            path: "./core/PreludeCore.xcframework.zip"
+            url: "https://github.com/amezcua/PreludeTest/releases/download/0.1.0/PreludeCore.xcframework.zip",
+            checksum: "https://github.com/amezcua/PreludeTest/releases/download/0.1.0/PreludeCore.xcframework.zip.checksum"
         ),
     ]
 )
