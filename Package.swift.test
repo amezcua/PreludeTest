@@ -21,9 +21,9 @@ let package = Package(
             dependencies: ["PreludeCore"]
         ),
         .binaryTarget(
-              name: "PreludeCore",
-              url: "aFile",
-              checksum: "aChecksum"
-          ),
+            name: "PreludeCore",
+            url: "https://pub-cac6f86c3ee04b919167390091469db5.r2.dev/PreludeCore-0.1.0.xcframework.zip",
+            checksum: "https://pub-cac6f86c3ee04b919167390091469db5.r2.dev/PreludeCore-0.1.0.xcframework.zip.checksum"
+        ),
     ]
 )
