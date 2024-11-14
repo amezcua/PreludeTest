@@ -21,8 +21,9 @@ let package = Package(
             dependencies: ["PreludeCore"]
         ),
         .binaryTarget(
-            name: "PreludeCore",
-            path: "./core/PreludeCore.xcframework.zip"
-        ),
+              name: "PreludeCore",
+              url: "https://prelude-public.s3.amazonaws.com/sdk/releases/apple/core/0.1.0/PreludeCore-0.1.0.xcframework.zip",
+              checksum: "cb46aabd91c543f46984e391dcb2ac4b9f4b1e728001d0288f1392f7037d2892"
+          ),
     ]
 )
