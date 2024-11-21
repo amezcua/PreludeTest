@@ -11,7 +11,7 @@ let package = Package(
     products: [
         .library(
             name: "Prelude",
-            type: .dynamic,
+            type: .static,
             targets: ["Prelude", "PreludeCore"]
         ),
     ],
