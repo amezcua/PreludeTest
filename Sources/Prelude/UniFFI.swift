@@ -170,10 +170,16 @@ private protocol FfiConverter {
 private protocol FfiConverterPrimitive: FfiConverter where FfiType == SwiftType {}
 
 extension FfiConverterPrimitive {
+    #if swift(>=5.8)
+        @_documentation(visibility: private)
+    #endif
     internal static func lift(_ value: FfiType) throws -> SwiftType {
         return value
     }
 
+    #if swift(>=5.8)
+        @_documentation(visibility: private)
+    #endif
     internal static func lower(_ value: SwiftType) -> FfiType {
         return value
     }
@@ -184,6 +190,9 @@ extension FfiConverterPrimitive {
 private protocol FfiConverterRustBuffer: FfiConverter where FfiType == RustBuffer {}
 
 extension FfiConverterRustBuffer {
+    #if swift(>=5.8)
+        @_documentation(visibility: private)
+    #endif
     internal static func lift(_ buf: RustBuffer) throws -> SwiftType {
         var reader = createReader(data: Data(rustBuffer: buf))
         let value = try read(from: &reader)
@@ -194,6 +203,9 @@ extension FfiConverterRustBuffer {
         return value
     }
 
+    #if swift(>=5.8)
+        @_documentation(visibility: private)
+    #endif
     internal static func lower(_ value: SwiftType) -> RustBuffer {
         var writer = createWriter()
         write(value, into: &writer)
@@ -383,6 +395,9 @@ private class UniffiHandleMap<T> {
 
 // Public interface members begin here.
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterInt32: FfiConverterPrimitive {
     typealias FfiType = Int32
     typealias SwiftType = Int32
@@ -396,6 +411,9 @@ private struct FfiConverterInt32: FfiConverterPrimitive {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterInt64: FfiConverterPrimitive {
     typealias FfiType = Int64
     typealias SwiftType = Int64
@@ -409,6 +427,9 @@ private struct FfiConverterInt64: FfiConverterPrimitive {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterFloat: FfiConverterPrimitive {
     typealias FfiType = Float
     typealias SwiftType = Float
@@ -422,6 +443,9 @@ private struct FfiConverterFloat: FfiConverterPrimitive {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterBool: FfiConverter {
     typealias FfiType = Int8
     typealias SwiftType = Bool
@@ -443,6 +467,9 @@ private struct FfiConverterBool: FfiConverter {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterString: FfiConverter {
     typealias SwiftType = String
     typealias FfiType = RustBuffer
@@ -481,6 +508,9 @@ private struct FfiConverterString: FfiConverter {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterData: FfiConverterRustBuffer {
     typealias SwiftType = Data
 
@@ -496,6 +526,9 @@ private struct FfiConverterData: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterTimestamp: FfiConverterRustBuffer {
     typealias SwiftType = Date
 
@@ -566,6 +599,9 @@ extension Application: Equatable, Hashable {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal struct FfiConverterTypeApplication: FfiConverterRustBuffer {
     internal static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> Application {
         return
@@ -583,10 +619,16 @@ internal struct FfiConverterTypeApplication: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeApplication_lift(_ buf: RustBuffer) throws -> Application {
     return try FfiConverterTypeApplication.lift(buf)
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeApplication_lower(_ value: Application) -> RustBuffer {
     return FfiConverterTypeApplication.lower(value)
 }
@@ -620,6 +662,9 @@ extension ApplicationAndroidPlatform: Equatable, Hashable {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal struct FfiConverterTypeApplicationAndroidPlatform: FfiConverterRustBuffer {
     internal static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> ApplicationAndroidPlatform {
         return
@@ -635,10 +680,16 @@ internal struct FfiConverterTypeApplicationAndroidPlatform: FfiConverterRustBuff
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeApplicationAndroidPlatform_lift(_ buf: RustBuffer) throws -> ApplicationAndroidPlatform {
     return try FfiConverterTypeApplicationAndroidPlatform.lift(buf)
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeApplicationAndroidPlatform_lower(_ value: ApplicationAndroidPlatform) -> RustBuffer {
     return FfiConverterTypeApplicationAndroidPlatform.lower(value)
 }
@@ -672,6 +723,9 @@ extension ApplicationApplePlatform: Equatable, Hashable {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal struct FfiConverterTypeApplicationApplePlatform: FfiConverterRustBuffer {
     internal static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> ApplicationApplePlatform {
         return
@@ -687,10 +741,16 @@ internal struct FfiConverterTypeApplicationApplePlatform: FfiConverterRustBuffer
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeApplicationApplePlatform_lift(_ buf: RustBuffer) throws -> ApplicationApplePlatform {
     return try FfiConverterTypeApplicationApplePlatform.lift(buf)
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeApplicationApplePlatform_lower(_ value: ApplicationApplePlatform) -> RustBuffer {
     return FfiConverterTypeApplicationApplePlatform.lower(value)
 }
@@ -820,6 +880,9 @@ extension Device: Equatable, Hashable {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal struct FfiConverterTypeDevice: FfiConverterRustBuffer {
     internal static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> Device {
         return
@@ -867,10 +930,16 @@ internal struct FfiConverterTypeDevice: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeDevice_lift(_ buf: RustBuffer) throws -> Device {
     return try FfiConverterTypeDevice.lift(buf)
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeDevice_lower(_ value: Device) -> RustBuffer {
     return FfiConverterTypeDevice.lower(value)
 }
@@ -904,6 +973,9 @@ extension DisplayResolution: Equatable, Hashable {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal struct FfiConverterTypeDisplayResolution: FfiConverterRustBuffer {
     internal static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> DisplayResolution {
         return
@@ -919,10 +991,16 @@ internal struct FfiConverterTypeDisplayResolution: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeDisplayResolution_lift(_ buf: RustBuffer) throws -> DisplayResolution {
     return try FfiConverterTypeDisplayResolution.lift(buf)
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeDisplayResolution_lower(_ value: DisplayResolution) -> RustBuffer {
     return FfiConverterTypeDisplayResolution.lower(value)
 }
@@ -1004,6 +1082,9 @@ extension Hardware: Equatable, Hashable {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal struct FfiConverterTypeHardware: FfiConverterRustBuffer {
     internal static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> Hardware {
         return
@@ -1035,10 +1116,16 @@ internal struct FfiConverterTypeHardware: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeHardware_lift(_ buf: RustBuffer) throws -> Hardware {
     return try FfiConverterTypeHardware.lift(buf)
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeHardware_lower(_ value: Hardware) -> RustBuffer {
     return FfiConverterTypeHardware.lower(value)
 }
@@ -1072,6 +1159,9 @@ extension Network: Equatable, Hashable {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal struct FfiConverterTypeNetwork: FfiConverterRustBuffer {
     internal static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> Network {
         return
@@ -1087,10 +1177,16 @@ internal struct FfiConverterTypeNetwork: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeNetwork_lift(_ buf: RustBuffer) throws -> Network {
     return try FfiConverterTypeNetwork.lift(buf)
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeNetwork_lower(_ value: Network) -> RustBuffer {
     return FfiConverterTypeNetwork.lower(value)
 }
@@ -1148,6 +1244,9 @@ extension Signals: Equatable, Hashable {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal struct FfiConverterTypeSignals: FfiConverterRustBuffer {
     internal static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> Signals {
         return
@@ -1171,10 +1270,16 @@ internal struct FfiConverterTypeSignals: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeSignals_lift(_ buf: RustBuffer) throws -> Signals {
     return try FfiConverterTypeSignals.lift(buf)
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeSignals_lower(_ value: Signals) -> RustBuffer {
     return FfiConverterTypeSignals.lower(value)
 }
@@ -1189,6 +1294,9 @@ internal enum ApplicationPlatform {
     )
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal struct FfiConverterTypeApplicationPlatform: FfiConverterRustBuffer {
     typealias SwiftType = ApplicationPlatform
 
@@ -1218,10 +1326,16 @@ internal struct FfiConverterTypeApplicationPlatform: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeApplicationPlatform_lift(_ buf: RustBuffer) throws -> ApplicationPlatform {
     return try FfiConverterTypeApplicationPlatform.lift(buf)
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeApplicationPlatform_lower(_ value: ApplicationPlatform) -> RustBuffer {
     return FfiConverterTypeApplicationPlatform.lower(value)
 }
@@ -1239,6 +1353,9 @@ internal enum BatteryState {
     case full
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal struct FfiConverterTypeBatteryState: FfiConverterRustBuffer {
     typealias SwiftType = BatteryState
 
@@ -1279,10 +1396,16 @@ internal struct FfiConverterTypeBatteryState: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeBatteryState_lift(_ buf: RustBuffer) throws -> BatteryState {
     return try FfiConverterTypeBatteryState.lift(buf)
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypeBatteryState_lower(_ value: BatteryState) -> RustBuffer {
     return FfiConverterTypeBatteryState.lower(value)
 }
@@ -1298,6 +1421,9 @@ internal enum Platform {
     case android
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal struct FfiConverterTypePlatform: FfiConverterRustBuffer {
     typealias SwiftType = Platform
 
@@ -1328,16 +1454,25 @@ internal struct FfiConverterTypePlatform: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypePlatform_lift(_ buf: RustBuffer) throws -> Platform {
     return try FfiConverterTypePlatform.lift(buf)
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 internal func FfiConverterTypePlatform_lower(_ value: Platform) -> RustBuffer {
     return FfiConverterTypePlatform.lower(value)
 }
 
 extension Platform: Equatable, Hashable {}
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterOptionInt32: FfiConverterRustBuffer {
     typealias SwiftType = Int32?
 
@@ -1359,6 +1494,9 @@ private struct FfiConverterOptionInt32: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterOptionInt64: FfiConverterRustBuffer {
     typealias SwiftType = Int64?
 
@@ -1380,6 +1518,9 @@ private struct FfiConverterOptionInt64: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterOptionFloat: FfiConverterRustBuffer {
     typealias SwiftType = Float?
 
@@ -1401,6 +1542,9 @@ private struct FfiConverterOptionFloat: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterOptionBool: FfiConverterRustBuffer {
     typealias SwiftType = Bool?
 
@@ -1422,6 +1566,9 @@ private struct FfiConverterOptionBool: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterOptionString: FfiConverterRustBuffer {
     typealias SwiftType = String?
 
@@ -1443,6 +1590,9 @@ private struct FfiConverterOptionString: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterOptionTimestamp: FfiConverterRustBuffer {
     typealias SwiftType = Date?
 
@@ -1464,6 +1614,9 @@ private struct FfiConverterOptionTimestamp: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterOptionTypeDisplayResolution: FfiConverterRustBuffer {
     typealias SwiftType = DisplayResolution?
 
@@ -1485,6 +1638,9 @@ private struct FfiConverterOptionTypeDisplayResolution: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterOptionTypeApplicationPlatform: FfiConverterRustBuffer {
     typealias SwiftType = ApplicationPlatform?
 
@@ -1506,6 +1662,9 @@ private struct FfiConverterOptionTypeApplicationPlatform: FfiConverterRustBuffer
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterOptionTypeBatteryState: FfiConverterRustBuffer {
     typealias SwiftType = BatteryState?
 
@@ -1527,6 +1686,9 @@ private struct FfiConverterOptionTypeBatteryState: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterOptionTypePlatform: FfiConverterRustBuffer {
     typealias SwiftType = Platform?
 
@@ -1548,6 +1710,9 @@ private struct FfiConverterOptionTypePlatform: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterOptionSequenceString: FfiConverterRustBuffer {
     typealias SwiftType = [String]?
 
@@ -1569,6 +1734,9 @@ private struct FfiConverterOptionSequenceString: FfiConverterRustBuffer {
     }
 }
 
+#if swift(>=5.8)
+    @_documentation(visibility: private)
+#endif
 private struct FfiConverterSequenceString: FfiConverterRustBuffer {
     typealias SwiftType = [String]
 
