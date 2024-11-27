@@ -11,7 +11,6 @@ let package = Package(
     products: [
         .library(
             name: "Prelude",
-            type: .dynamic,
             targets: ["Prelude", "PreludeCore"]
         ),
     ],
@@ -21,9 +20,9 @@ let package = Package(
             dependencies: ["PreludeCore"]
         ),
         .binaryTarget(
-            name: "PreludeCore",
-            url: "https://pub-cac6f86c3ee04b919167390091469db5.r2.dev/PreludeCore-0.1.0.xcframework.zip",
-            checksum: "4a86e74d3e4ba57c721f441b24e2400469ab811b2bef75c2c0cf698e518947ad"
-        ),
+              name: "PreludeCore",
+              url: "https://prelude-public.s3.amazonaws.com/sdk/releases/apple/core/0.1.0/PreludeCore-0.1.0.xcframework.zip",
+              checksum: "294f38ac35b462d913afb98735e0bce93622d52525f3bcf4c01de5d968a1b0a8"
+          ),
     ]
 )
