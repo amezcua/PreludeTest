@@ -22,7 +22,7 @@ let package = Package(
         .binaryTarget(
               name: "PreludeCore",
               url: "https://prelude-public.s3.amazonaws.com/sdk/releases/apple/core/0.1.0/PreludeCore-0.1.0.xcframework.zip",
-              checksum: "a5fe26c6f5d66eca23a2c6b6fefb61f412ec53246211313a2e0ebfa5e94c36eb"
+              checksum: "5dbc23e1ac838a8a92f89177565f7b94a0df1c4b16ee44869193eefd818f1c52"
           ),
     ]
 )
