@@ -5,8 +5,6 @@ The Swift SDK allows you to capture certain device signals that will be reported
 
 It is provided as a regular Swift package that you can [import as a dependency directly into your iOS application](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app).
 
-The Swift package is configured as a dynamic library which requires that you mark it as "Embed & Sign" in the library configuration for your app to ensure that it is included in your final bundle.
-
 Usage of the SDK is very simple, you just need to configure it with your SDK key (you can find it in your Prelude Dashboard) and call a single dispatch function:
 
 ```
